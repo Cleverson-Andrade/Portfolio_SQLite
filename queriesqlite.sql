@@ -1,25 +1,37 @@
--- Exemplos de SELECT no SQLite para seu projeto
+-- =============================================================================
+-- Exemplos de SELECT no SQLite para seu projeto | SQLite SELECT Examples for your project
+-- =============================================================================
 
 -- Exemplo 1: Selecionar todos os produtos
+-- Example 1: Select all products
 SELECT * FROM produtos;
 
 -- Exemplo 2: Selecionar todos os funcionários
 -- Essa consulta irá mostrar todos os dados de todos os funcionários.
+-- Example 2: Select all employees
+-- This query will show all data from all employees.
 SELECT * FROM funcionarios;
 
 
 -- Mas e se você quiser ver apenas algumas colunas, e não todas?
 -- Você pode especificar quais colunas deseja ver, separando-as por vírgula.
 -- Isso ajuda a focar nas informações importantes e evita o excesso de dados.
+-- But what if you want to see only some columns, and not all of them?
+-- You can specify which columns you want to see, separating them with a comma.
+-- This helps focus on important information and avoids data overload.
 SELECT "nome", "sobrenome"
 FROM funcionarios;
 
 -- Exemplo 3: Selecionar o nome e o preço de venda dos produtos de agregação
 -- Isso é útil para criar um relatório de preços, por exemplo.
+-- Example 3: Select the name and selling price of aggregation products
+-- This is useful for creating a price report, for example.
 SELECT descricao, preco_venda FROM produtos_agregacao;
 
 -- Exemplo 4: Selecionar o nome e o cargo dos clientes
 -- Isso te permite ver rapidamente a profissão de cada cliente.
+-- Example 4: Select the name and job title of customers
+-- This allows you to quickly see each customer's profession.
 SELECT
     c.nome AS nome_cliente,
     p.cargo AS cargo_cliente
@@ -32,10 +44,16 @@ JOIN
 -- Agora, vamos adicionar uma condição para filtrar os dados.
 -- A cláusula WHERE permite que você selecione apenas as linhas que
 -- atendem a uma condição específica.
+-- Now, let's add a condition to filter the data.
+-- The WHERE clause allows you to select only the rows that
+-- meet a specific condition.
 
 -- Exemplo 5: Selecionar apenas os produtos com o id_tipo_produto igual a 3
 -- Essa consulta seria como dizer: "Me mostre todos os produtos que são 'Diversos'".
 -- Isso é útil para encontrar produtos de uma categoria específica.
+-- Example 5: Select only products with id_tipo_produto equal to 3
+-- This query would be like saying: "Show me all products that are 'Miscellaneous'".
+-- This is useful for finding products in a specific category.
 SELECT
     p.descricao AS nome_produto,
     p.preco AS preco_produto,
@@ -50,6 +68,9 @@ WHERE
 -- Exemplo 6: Selecionar os pagamentos com salário acima de R$ 5000,00
 -- Essa consulta é como pedir: "Quais funcionários ganham mais de 5000 reais?".
 -- É uma forma de filtrar informações para análise.
+-- Example 6: Select payments with salary above R$ 5000.00
+-- This query is like asking: "Which employees earn more than 5000 reais?".
+-- It is a way to filter information for analysis.
 SELECT
     f.nome AS nome_funcionario,
     p.salario AS salario_funcionario
@@ -64,13 +85,20 @@ WHERE
 -- E se quisermos ordenar os resultados?
 -- A cláusula ORDER BY permite ordenar os resultados em ordem ascendente (ASC)
 -- ou descendente (DESC).
+-- What if we want to sort the results?
+-- The ORDER BY clause allows you to sort results in ascending (ASC)
+-- or descending (DESC) order.
 
 -- Exemplo 7: Selecionar todos os produtos e ordená-los pelo preço de venda, do mais barato para o mais caro
 -- Isso é útil para criar uma lista de preços, por exemplo.
+-- Example 7: Select all products and sort them by selling price, from cheapest to most expensive
+-- This is useful for creating a price list, for example.
 SELECT descricao, preco_venda FROM produtos_agregacao
 ORDER BY preco_venda ASC;
 
 -- Exemplo 8: Selecionar os funcionários e ordená-los pelo nome, de Z a A
 -- Isso pode ser útil para organizar uma lista de nomes em ordem alfabética inversa.
+-- Example 8: Select employees and sort them by name, from Z to A
+-- This can be useful for organizing a list of names in reverse alphabetical order.
 SELECT nome, sobrenome FROM funcionarios
 ORDER BY nome DESC;
